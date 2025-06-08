@@ -34,6 +34,8 @@ jobs:
 
       - name: Build
         run: npm run build
+      - name: Remove base tag from index.html
+        run: sed -i '/<base href=".*">/d' ./dist/index.html
       - name: Add .nojekyll file
         run: touch ./dist/.nojekyll
       - name: Setup Pages
