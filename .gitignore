@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude local files
+CLAUDE.local.md
+.claude/local/
