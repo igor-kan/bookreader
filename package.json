@@ -11,7 +11,26 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "start": "next start",
+    "lint:fix": "next lint --fix",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:ci": "jest --ci --coverage --watchAll=false",
+    "analyze": "cross-env ANALYZE=true next build",
+    "bundle-analyzer": "@next/bundle-analyzer npm run build",
+    "audit:security": "npm audit --audit-level moderate",
+    "audit:fix": "npm audit fix",
+    "outdated": "npm outdated",
+    "clean": "rm -rf .next out dist node_modules/.cache",
+    "clean:all": "rm -rf .next out dist node_modules package-lock.json && npm install",
+    "precommit": "lint-staged",
+    "prepare": "husky install",
+    "export": "next export"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
@@ -85,5 +104,14 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css}": [
+      "prettier --write"
+    ]
   }
 }
